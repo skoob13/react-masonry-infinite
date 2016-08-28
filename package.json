@@ -1,6 +1,6 @@
 {
   "name": "react-masonry-infinite",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "React component for masonry infinite grid. Based on Bricks.js, React Infinite Scroller and React Masonry Layout.",
   "main": "./lib/index",
   "scripts": {
