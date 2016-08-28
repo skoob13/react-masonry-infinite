@@ -3,7 +3,7 @@
 Very simple React.js component for masonry grid. Based on [Bricks.js](https://github.com/callmecavs/bricks.js), [React Infinite Scroller](https://github.com/CassetteRocks/react-infinite-scroller) and [React Masonry Layout](https://github.com/scarletsky/react-masonry-layout).
 
 ### Features
-- masonry layout
+- Masonry layout
 - Perfomance of Bricks.js ([DEMO](http://callmecavs.com/bricks.js/))
 - Infinite scroll from box
 
@@ -17,7 +17,7 @@ Very simple React.js component for masonry grid. Based on [Bricks.js](https://gi
 import MasonryInfiniteScroller from 'react-masonry-infinite';
 
 ...
-<MasonryInfiniteScroller hasMore={this.state.hasMore} loadMore={() => elements = elements.push("Element")>
+<MasonryInfiniteScroller hasMore={this.state.hasMore} loadMore={() => this.setState({ elements: this.state.elements.push("Element") })>
     {
         elements.map((el, index) =>
             <div key={index}/>
@@ -33,7 +33,7 @@ import MasonryInfiniteScroller from 'react-masonry-infinite';
 |--------------------|-------------------|--------------------|--------------------|
 |        className          |       string      |        `''`      | CSS className for root element           |
 |      packed        |       string      |    `data-packed`   | An attribute added to the grid items after they're positioned within the grid. If the attribute is not prefixed with `data-`, it will be added. See [Bricks.js](https://github.com/callmecavs/bricks.js) |
-|       sizes         |       array       |    `[{ columns: 1, gutter: 30 }, { mq: '660px', columns: 2, gutter: 30 }, { mq: '970px', columns: 3, gutter: 30 }]` | An array of objects describing the grid's properties at different breakpoints. When defining your sizes, note the rules of [Bricks.js](https://github.com/callmecavs/bricks.js) |
+|       sizes         |       array       |    `[{ columns: 1, gutter: 20 }, { mq: '768px', columns: 2, gutter: 20 }, { mq: '1024px', columns: 3, gutter: 20 }]` | An array of objects describing the grid's properties at different breakpoints. When defining your sizes, note the rules of [Bricks.js](https://github.com/callmecavs/bricks.js) |
 |       position        |       bool      |         `true`       | A boolean indicating that the grid items should be positioned using the `top` and `left` CSS properties. |
 |       style        |       object      |         `{}`       | The inline style |
 |  pageStart    |      number     |      `0`    | The page number corresponding to the initial `items`, defaults to `0` which means that for the first loading, loadMore will be called with `1` |
