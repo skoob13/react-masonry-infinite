@@ -19,7 +19,7 @@ import MasonryInfiniteScroller from 'react-masonry-infinite';
 ...
 <MasonryInfiniteScroller hasMore={this.state.hasMore} loadMore={() => this.setState({ elements: this.state.elements.push("Element") })>
     {
-        elements.map((el, index) =>
+        this.state.elements.map((el, index) =>
             <div key={index}/>
         )
     }
