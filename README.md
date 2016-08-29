@@ -3,7 +3,7 @@
 Very simple React.js component for masonry grid. Based on [Bricks.js](https://github.com/callmecavs/bricks.js), [React Infinite Scroller](https://github.com/CassetteRocks/react-infinite-scroller) and [React Masonry Layout](https://github.com/scarletsky/react-masonry-layout).
 
 ### Demo
-([Demo page](https://skoob13.github.io/react-masonry-infinite))
+[Demo page](https://skoob13.github.io/react-masonry-infinite)
 
 ### Features
 - Masonry layout
