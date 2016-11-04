@@ -20,7 +20,7 @@ Very simple React.js component for masonry grid. Based on [Bricks.js](https://gi
 import MasonryInfiniteScroller from 'react-masonry-infinite';
 
 ...
-<MasonryInfiniteScroller hasMore={this.state.hasMore} loadMore={() => this.setState({ elements: this.state.elements.push("Element") })>
+<MasonryInfiniteScroller hasMore={this.state.hasMore} loadMore={() => this.setState({ elements: this.state.elements.push("Element") })}>
     {
         this.state.elements.map((el, index) =>
             <div key={index}/>
