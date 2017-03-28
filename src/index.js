@@ -9,6 +9,7 @@ export default class MasonryInfiniteScroller extends Component {
     hasMore: PropTypes.bool,
     loader: PropTypes.element,
     loadMore: PropTypes.func,
+    pack: PropTypes.bool,
     packed: PropTypes.string,
     pageStart: PropTypes.number,
     position: PropTypes.bool,
@@ -20,6 +21,7 @@ export default class MasonryInfiniteScroller extends Component {
 
   static defaultProps = {
     className: '',
+    pack: false,
     packed: 'data-packed',
     position: true,
     sizes: [
@@ -63,7 +65,11 @@ export default class MasonryInfiniteScroller extends Component {
     }
 
     if (prevProps.children.length !== children.length) {
-      return instance.update();
+      if (this.props.pack) {
+        return instance.pack();
+      } else {
+        return instance.update();
+      }
     }
   }
 
