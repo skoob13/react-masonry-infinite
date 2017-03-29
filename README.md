@@ -35,6 +35,7 @@ import MasonryInfiniteScroller from 'react-masonry-infinite';
 |       Props        |        Type       |       Default      |     Description    |
 |--------------------|-------------------|--------------------|--------------------|
 |        className          |       string      |        `''`      | CSS className for root element           |
+|      pack        |       bool      |    `false`   | Flag to force pack on every update |
 |      packed        |       string      |    `data-packed`   | An attribute added to the grid items after they're positioned within the grid. If the attribute is not prefixed with `data-`, it will be added. See [Bricks.js](https://github.com/callmecavs/bricks.js) |
 |       sizes         |       array       |    `[{ columns: 1, gutter: 20 }, { mq: '768px', columns: 2, gutter: 20 }, { mq: '1024px', columns: 3, gutter: 20 }]` | An array of objects describing the grid's properties at different breakpoints. When defining your sizes, note the rules of [Bricks.js](https://github.com/callmecavs/bricks.js) |
 |       position        |       bool      |         `true`       | A boolean indicating that the grid items should be positioned using the `top` and `left` CSS properties. |
