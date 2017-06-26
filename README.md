@@ -59,7 +59,7 @@ import MasonryInfiniteScroller from 'react-masonry-infinite';
 |  loader    |      DOMNode     |      `null`    | Loader element to be displayed while loading items |
 |  threshold    |      Number     |      `250`    | The distance between the bottom of the page and the bottom of the window's viewport that triggers the loading of new items |
 |  useWindow    |      DOMNode     |      `null`    | Booleanean stating whether to add listeners to the window, or else, the DOMNode |
-|      element        |       String      |    `div`   | Flag to force pack on every update |
+|      element        |       String      |    `div`   | Element type of infinite scroll container |
 
 ### Methods
 
