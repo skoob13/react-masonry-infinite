@@ -29,6 +29,7 @@
   "homepage": "https://skoob13.github.io/react-masonry-infinite",
   "dependencies": {
     "bricks.js": "^1.7.0",
+    "prop-types": "^15.5.10",
     "react-infinite-scroller": "^0.2.9"
   },
   "devDependencies": {
