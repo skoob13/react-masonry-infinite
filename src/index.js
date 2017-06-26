@@ -1,4 +1,5 @@
-import React, { PropTypes, Component } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Bricks from 'bricks.js';
 import InfiniteScroll from 'react-infinite-scroller';
 
@@ -6,9 +7,10 @@ export default class MasonryInfiniteScroller extends Component {
   static propTypes = {
     children: PropTypes.arrayOf(PropTypes.element).isRequired,
     className: PropTypes.string,
+    element: PropTypes.string,
     hasMore: PropTypes.bool,
-    loader: PropTypes.element,
     loadMore: PropTypes.func,
+    loader: PropTypes.element,
     pack: PropTypes.bool,
     packed: PropTypes.string,
     pageStart: PropTypes.number,
@@ -48,7 +50,8 @@ export default class MasonryInfiniteScroller extends Component {
       instance.pack();
     }
 
-    this.setState({ instance });
+    // eslint-disable-next-line
+    this.setState(() => ({ instance }));
   }
 
   componentDidUpdate(prevProps) {
@@ -58,17 +61,15 @@ export default class MasonryInfiniteScroller extends Component {
       return;
     }
 
-    const { instance } = this.state;
-
     if (prevProps.children.length === 0 && children.length > 0) {
-      return instance.pack();
+      return this.state.instance.pack();
     }
 
     if (prevProps.children.length !== children.length) {
       if (this.props.pack) {
-        return instance.pack();
+        return this.state.instance.pack();
       } else {
-        return instance.update();
+        return this.state.instance.update();
       }
     }
   }
@@ -77,22 +78,47 @@ export default class MasonryInfiniteScroller extends Component {
     this.state.instance.resize(false);
   }
 
+  setContainerRef = (component) => {
+    this.masonryContainer = component;
+  }
+
+  forcePack = () => {
+    if (this.masonryContainer) {
+      this.state.instance.pack();
+    }
+  }
+
+  forceUpdate = () => {
+    if (this.masonryContainer) {
+      this.state.instance.update();
+    }
+  }
+
   render() {
-    const { className, style, children, pageStart, loadMore, hasMore, loader, threshold, useWindow } = this.props;
+    const {
+      children,
+      className,
+      element,
+      hasMore,
+      loadMore,
+      loader,
+      pageStart,
+      style,
+      threshold,
+      useWindow
+    } = this.props;
+
     return (
       <InfiniteScroll
-        pageStart={pageStart}
-        loadMore={loadMore}
+        element={element}
         hasMore={hasMore}
+        loadMore={loadMore}
         loader={loader}
+        pageStart={pageStart}
         threshold={threshold}
         useWindow={useWindow}
       >
-        <div
-          ref={(component) => this.masonryContainer = component}
-          className={className}
-          style={style}
-        >
+        <div ref={this.setContainerRef} className={className} style={style}>
           {children}
         </div>
       </InfiniteScroll>
