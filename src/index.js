@@ -34,42 +34,48 @@ export default class MasonryInfiniteScroller extends Component {
     style: {}
   }
 
-  componentDidMount() {
-    const { packed, sizes, children, position } = this.props;
-
+  constructor(props) {
+    super(props)
+    const { packed, sizes, position } = this.props;
     const instance = Bricks({
       container: this.masonryContainer,
       packed: packed,
       sizes: sizes,
       position: position
     });
+    this.state = {
+      instance
+    }
+  }
+
+  componentDidMount() {
+    const { children } = this.props;
+    const { instance } = this.state;
 
     instance.resize(true);
 
     if (children.length > 0) {
       instance.pack();
     }
-
-    // eslint-disable-next-line
-    this.setState(() => ({ instance }));
   }
 
   componentDidUpdate(prevProps) {
     const { children } = this.props;
+    const { instance } = this.state;
 
     if (prevProps.children.length === 0 && children.length === 0) {
       return;
     }
 
     if (prevProps.children.length === 0 && children.length > 0) {
-      return this.state.instance.pack();
+      return instance.pack();
     }
 
     if (prevProps.children.length !== children.length) {
       if (this.props.pack) {
-        return this.state.instance.pack();
+        return instance.pack();
       } else {
-        return this.state.instance.update();
+        return instance.update();
       }
     }
   }
