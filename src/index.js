@@ -7,19 +7,12 @@ export default class MasonryInfiniteScroller extends Component {
   static propTypes = {
     children: PropTypes.arrayOf(PropTypes.element).isRequired,
     className: PropTypes.string,
-    element: PropTypes.string,
     initialLoad: PropTypes.bool,
-    hasMore: PropTypes.bool,
-    loadMore: PropTypes.func,
-    loader: PropTypes.element,
     pack: PropTypes.bool,
     packed: PropTypes.string,
-    pageStart: PropTypes.number,
     position: PropTypes.bool,
     sizes: PropTypes.array,
-    style: PropTypes.object,
-    threshold: PropTypes.number,
-    useWindow: PropTypes.bool
+    style: PropTypes.object
   }
 
   static defaultProps = {
@@ -36,29 +29,8 @@ export default class MasonryInfiniteScroller extends Component {
     style: {}
   }
 
-  constructor(props) {
-    super(props)
-    const { packed, sizes, position } = this.props;
-    const instance = Bricks({
-      container: this.masonryContainer,
-      packed: packed,
-      sizes: sizes,
-      position: position
-    });
-    this.state = {
-      instance
-    }
-  }
-
   componentDidMount() {
-    const { children } = this.props;
-    const { instance } = this.state;
-
-    instance.resize(true);
-
-    if (children.length > 0) {
-      instance.pack();
-    }
+    this.createNewInstance();
   }
 
   componentDidUpdate(prevProps) {
@@ -104,11 +76,33 @@ export default class MasonryInfiniteScroller extends Component {
     }
   }
 
+  createNewInstance = () => {
+    const { packed, sizes, children, position } = this.props;
+    const instance = Bricks({
+      container: this.masonryContainer,
+      packed: packed,
+      sizes: sizes,
+      position: position
+    });
+
+    instance.resize(true);
+
+    if (children.length > 0) {
+      instance.pack();
+    }
+
+    this.setState(() => ({ instance }));
+  }
+
   render() {
     const {
       children,
       className,
       style,
+      pack,
+      packed,
+      position,
+      sizes,
       ...props
     } = this.props;
 

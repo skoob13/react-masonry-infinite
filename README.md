@@ -33,10 +33,13 @@ Using `yarn`
 import MasonryInfiniteScroller from 'react-masonry-infinite';
 
 ...
-<MasonryInfiniteScroller hasMore={this.state.hasMore} loadMore={() => this.setState({ elements: this.state.elements.push("Element") })}>
+<MasonryInfiniteScroller
+    hasMore={this.state.hasMore}
+    loadMore={() => this.setState({ elements: this.state.elements.push("Element") })}
+>
     {
-        this.state.elements.map((el, index) =>
-            <div key={index}/>
+        this.state.elements.map(id =>
+            <div key={id} />
         )
     }
 </MasonryInfiniteScroller>
@@ -53,14 +56,8 @@ import MasonryInfiniteScroller from 'react-masonry-infinite';
 |       sizes         |       Array       |    `[{ columns: 1, gutter: 20 }, { mq: '768px', columns: 2, gutter: 20 }, { mq: '1024px', columns: 3, gutter: 20 }]` | An array of objects describing the grid's properties at different breakpoints. When defining your sizes, note the rules of [Bricks.js](https://github.com/callmecavs/bricks.js) |
 |       position        |       Boolean      |         `true`       | A Boolean indicating that the grid items should be positioned using the `top` and `left` CSS properties. |
 |       style        |       Object      |         `{}`       | The inline style |
-|  pageStart    |      Number     |      `0`    | The page number corresponding to the initial `items`, defaults to `0` which means that for the first loading, loadMore will be called with `1` |
-|  initialLoad    |      Boolean     |      `true`    | Booleanean stating whether the component should load the first set of items. |
-|  loadMore    |      Function     |      `(pageToLoad) => {}`    | This function is called when the user scrolls down and we need to load items |
-|  hasMore    |      Boolean     |      `true`    | Boolean stating whether there are more items to be loaded. Event listeners are removed if `false` |
-|  loader    |      DOMNode     |      `null`    | Loader element to be displayed while loading items |
-|  threshold    |      Number     |      `250`    | The distance between the bottom of the page and the bottom of the window's viewport that triggers the loading of new items |
-|  useWindow    |      DOMNode     |      `null`    | Booleanean stating whether to add listeners to the window, or else, the DOMNode |
-|      element        |       String      |    `div`   | Element type of infinite scroll container |
+
+And other [React Infinite Scroller](https://github.com/CassetteRocks/react-infinite-scroller) props.
 
 ### Methods
 
@@ -68,6 +65,7 @@ import MasonryInfiniteScroller from 'react-masonry-infinite';
 |:-:|:--|
 |forcePack|Packs Bricks.js instance (usefull when data is dynamic)|
 |forceUpdate|Updates Bricks.js instance|
+|createNewInstance|Recreates Bricks.js instance. E.g. when you need to dynamically handle amount of columns.|
 
 ### License
 MIT
