@@ -54,6 +54,7 @@ import MasonryInfiniteScroller from 'react-masonry-infinite';
 |       position        |       Boolean      |         `true`       | A Booleanean indicating that the grid items should be positioned using the `top` and `left` CSS properties. |
 |       style        |       Object      |         `{}`       | The inline style |
 |  pageStart    |      Number     |      `0`    | The page number corresponding to the initial `items`, defaults to `0` which means that for the first loading, loadMore will be called with `1` |
+|  initialLoad    |      Boolean     |      `true`    | Booleanean stating whether the component should load the first set of items. |
 |  loadMore    |      Function     |      `(pageToLoad) => {}`    | This function is called when the user scrolls down and we need to load items |
 |  hasMore    |      Boolean     |      `true`    | Booleanean stating whether there are more items to be loaded. Event listeners are removed if `false` |
 |  loader    |      DOMNode     |      `null`    | Loader element to be displayed while loading items |
