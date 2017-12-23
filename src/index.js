@@ -108,28 +108,12 @@ export default class MasonryInfiniteScroller extends Component {
     const {
       children,
       className,
-      element,
-      initialLoad,
-      hasMore,
-      loadMore,
-      loader,
-      pageStart,
       style,
-      threshold,
-      useWindow
+      ...props
     } = this.props;
 
     return (
-      <InfiniteScroll
-        element={element}
-        initialLoad={initialLoad}
-        hasMore={hasMore}
-        loadMore={loadMore}
-        loader={loader}
-        pageStart={pageStart}
-        threshold={threshold}
-        useWindow={useWindow}
-      >
+      <InfiniteScroll {...props}>
         <div ref={this.setContainerRef} className={className} style={style}>
           {children}
         </div>
