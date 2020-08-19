@@ -2,6 +2,12 @@
 
 [![npm](https://img.shields.io/npm/dy/localeval.svg)](https://npmjs.com/react-masonry-infinite)
 
+## Deprecation Notice
+
+This library is no longer supported. I recommend to use better alternatives such as [react-virtualized](https://github.com/bvaughn/react-virtualized) with virtualization from the box or [react-masonry-css](https://github.com/paulcollett/react-masonry-css) (you can use [react-window](https://github.com/bvaughn/react-window) or [react-virtual](https://github.com/tannerlinsley/react-virtual) for infinite scrolling).
+
+## About
+
 Very simple React.js component for masonry grid. Based on [Bricks.js](https://github.com/callmecavs/bricks.js), [React Infinite Scroller](https://github.com/CassetteRocks/react-infinite-scroller) and [React Masonry Layout](https://github.com/scarletsky/react-masonry-layout).
 
 Component is mostly suitable for static data, but can be used with dynamic with instance methods.
